@@ -30,12 +30,36 @@ class Vector2:
             raise TypeError("Cannot add a vector value to a non-vector value")
 
     def __radd__(self, other):
-        if isinstance(other, Vector2) or isinstance(other, Vector2):
+        if isinstance(other, Vector2) or isinstance(other, tuple):
             x = other[0] + self.__x
             y = other[1] + self.__y
             return Vector2(x, y)
         else:
             raise TypeError("Cannot add a vector value to a non-vector value")
+
+    def __sub__(self, other):
+        if isinstance(other, Vector2) or isinstance(other, tuple):
+            x = self.__x - other[0]
+            y = self.__y - other[1]
+            return Vector2(x, y)
+        else:
+            raise TypeError("Cannot add a vector value to a non-vector value")
+
+    def __rsub__(self, other):
+        if isinstance(other, Vector2) or isinstance(other, tuple):
+            x = other[0] - self.__x
+            y = other[1] - self.__y
+            return Vector2(x, y)
+        else:
+            raise TypeError("Cannot add a vector value to a non-vector value")
+
+    def __mul__(self, other):
+        if isinstance(other, int) or isinstance(other, float):
+            x = other * self.__x
+            y = other * self.__y
+            return x, y
+        else:
+            raise ValueError("Can only multiply a vector by a scalar")
 
     def magnitude(self) -> float:
         """
